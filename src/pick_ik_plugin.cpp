@@ -89,6 +89,9 @@ class PickIKPlugin : public kinematics::KinematicsBase {
         return true;
     }
 
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Woverloaded-virtual"
+
     virtual bool searchPositionIK(
         std::vector<geometry_msgs::msg::Pose> const& ik_poses,
         std::vector<double> const& ik_seed_state,
@@ -217,6 +220,7 @@ class PickIKPlugin : public kinematics::KinematicsBase {
 
         return found_solution;
     }
+    #pragma clang diagnostic pop
 
     virtual std::vector<std::string> const& getJointNames() const { return joint_names_; }
 
